@@ -13,7 +13,7 @@ app.use(requireHTTPS);
 app.use(express.static(`./dist/sugysri-ssr`));
 
 app.get(`/*`, (req, res) =>
-    res.sendFile('index.html', {root: `dist/angular-heroku/`}),
+    res.sendFile(`index.html`, {root: `dist/sugysri-ssr/`}),
 );
 
 app.listen(process.env.PORT || 8080);
