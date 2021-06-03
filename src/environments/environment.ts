@@ -3,7 +3,20 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
-  production: false
+  production: false,
+  // apiUrl:'http://localhost:8091/user/authenticate',
+  // getUrl:'http://localhost:8091/giftRecord/get',
+  // editUrl:'http://localhost:8091/giftRecord/edit',
+  // deleteUrl:'http://localhost:8091/giftRecord/delete',
+  // addUrl:'http://localhost:8091/giftRecord/add',
+  // selectiveDeleteUrl:'http://localhost:8091/giftRecord/selectiveDelete'
+
+  apiUrl:'https://gift-record-service.herokuapp.com/user/authenticate',
+  getUrl:'https://gift-record-service.herokuapp.com/giftRecord/get',
+  editUrl:'https://gift-record-service.herokuapp.com/giftRecord/edit',
+  deleteUrl:'https://gift-record-service.herokuapp.com/giftRecord/delete',
+  addUrl:'https://gift-record-service.herokuapp.com/giftRecord/add',
+  selectiveDeleteUrl:'https://gift-record-service.herokuapp.com/giftRecord/selectiveDelete'
 };
 
 /*

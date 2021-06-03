@@ -1,0 +1,84 @@
+<h1 mat-dialog-title>Add/Edit Person</h1>
+
+<div mat-dialog-content>
+    <form [formGroup]="formInstance">
+        <div>
+            <mat-form-field class="fullWidth" appearance="outline">
+                <mat-label>Name *</mat-label>
+                <input matInput type="text" name="name" formControlName="name">
+                <mat-error *ngIf="
+        formInstance.controls['name']?.errors?.required">field required</mat-error>
+            </mat-form-field>
+        </div>
+
+        <div class="mt-5">
+            <mat-form-field class="fullWidth" appearance="outline">
+                <mat-label>Area *</mat-label>
+                <input matInput type="text" name="area" formControlName="area" />
+                <mat-error *ngIf="
+        formInstance.controls['area']?.errors?.required">field required</mat-error>
+            </mat-form-field>
+        </div>
+
+        <div class="mt-5">
+
+            <mat-form-field class="fullWidth" appearance="outline">
+                <mat-label>City *</mat-label>
+                <mat-select name="city" formControlName="city">
+                    <mat-option value="Cuddalore">Cuddalore</mat-option>
+                    <mat-option value="Villupuram">Villupuram</mat-option>
+                    <mat-option value="Pondicherry">Pondicherry</mat-option>
+                    <mat-option value="Panruti">Panruti</mat-option>
+                </mat-select>
+                <mat-error *ngIf="formInstance.controls['city']?.errors?.required">field required
+                </mat-error>
+            </mat-form-field>
+
+        </div>
+
+        <div class="mt-5">
+            <mat-form-field class="fullWidth" appearance="outline">
+                <mat-label>Job *</mat-label>
+                <input matInput type="text" name="job" formControlName="job" />
+                <mat-error *ngIf="
+        formInstance.controls['job']?.errors?.required">field required</mat-error>
+            </mat-form-field>
+        </div>
+
+        <div class="mt-5">
+            <mat-form-field class="fullWidth" appearance="outline">
+                <mat-label>Amount *</mat-label>
+                <input matInput type="number" name="amount" formControlName="amount" />
+                <mat-error *ngIf="
+        formInstance.controls['amount']?.errors?.required">field required</mat-error>
+            </mat-form-field>
+        </div>
+
+        <div class="mt-5">
+            <mat-form-field class="fullWidth" appearance="outline">
+                <mat-label>Gift *</mat-label>
+                <input matInput type="text" name="gift" formControlName="gift" />
+                <mat-error *ngIf="
+        formInstance.controls['gift']?.errors?.required">field required</mat-error>
+            </mat-form-field>
+        </div>
+
+        <div class="mt-5">
+            <mat-form-field class="fullWidth" appearance="outline">
+                <mat-label>Gold *</mat-label>
+                <input matInput type="text" name="gold" formControlName="gold" />
+                <mat-error *ngIf="
+        formInstance.controls['gold']?.errors?.required">field required</mat-error>
+            </mat-form-field>
+        </div>
+
+        
+    </form>
+</div>
+
+<div class="mt-5" mat-dialog-actions>
+    <button mat-raised-button color="primary" [disabled]="formInstance.invalid" (click)="save()"
+        cdkFocusInitial>Yes</button>
+    <button mat-raised-button mat-dialog-close>No</button>
+
+</div>

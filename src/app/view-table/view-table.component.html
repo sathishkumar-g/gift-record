@@ -1,0 +1,34 @@
+<app-mat-spinner-overlay *ngIf="overlay">
+</app-mat-spinner-overlay>
+
+<!-- <div class="mat-elevation-z8 container" [ngStyle]="{backgroundImage:'url(../assets/images/sugysri.jpg)'}"> -->
+<div class="mat-elevation-z8 container">
+    <div class="row align-items-center justify-content-end pt-3">
+        <div class="col-1">
+            <!-- <label for="Table">Data Table</label> -->
+            <input type="text" style="float:right" value="" (keyup)="applyFilter($event.target)"
+                placeholder="search for" class="form-control-sm top-margin">
+        </div>
+    </div>
+
+    <div class='pt-3'>
+        <cdk-virtual-scroll-viewport itemSize="50" class="viewport">
+            <table mat-table [dataSource]="dataSource" matSort class="w-100 mh-100 border border-dark">
+                <ng-container *ngFor="let column of displayedColumns" [matColumnDef]="column">
+                    <th mat-header-cell *matHeaderCellDef>
+                        <div style="display: flex; align-items: center;" class='text-white h6'>
+                            <span mat-sort-header>{{column}}</span>
+                        </div>
+                    </th>
+                    <td mat-cell *matCellDef="let element"> {{element[column]}} </td>
+                </ng-container>
+
+                <tr mat-header-row *matHeaderRowDef="columnsToDisplay; sticky:true" class="my-3 bg-color bg-gradient"></tr>
+                <tr mat-row *matRowDef="let row; columns: columnsToDisplay;"></tr>
+            </table>
+        </cdk-virtual-scroll-viewport>
+    </div>
+
+    <mat-paginator [pageSize]="10" [pageSizeOptions]="[10]" showFirstLastButtons></mat-paginator>
+
+</div>
