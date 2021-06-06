@@ -1,4 +1,4 @@
-import { Component, HostListener } from '@angular/core';
+import { Component, HostListener, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { LoginService } from './services/login.service';
 import { User } from './models/user';
@@ -8,15 +8,16 @@ import { User } from './models/user';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss']
 })
-export class AppComponent {
+export class AppComponent implements OnInit {
 
-  currentUser: User;
+  currentUser: string;
   timeoutId;
   constructor(
     private router: Router,
     private loginService: LoginService
-  ) {
-    this.loginService.currentUser.subscribe(x => this.currentUser = x);
+  ) { }
+  ngOnInit(): void {
+    //this.loginService.currentUser.subscribe(x => this.currentUser = x);
     this.checkTimeOut();
   }
   @HostListener('window:keydown')
@@ -27,10 +28,10 @@ export class AppComponent {
     this.checkTimeOut();
   }
   checkTimeOut() {
-    this.timeoutId = setTimeout(this.logout,60000,this.loginService,this.router);
+    this.timeoutId = setTimeout(this.logout, 60000, this.loginService, this.router);
   }
 
-  logout(authService,route) {
+  logout(authService, route) {
     authService.logout();
     route.navigate(['/login']);
   }

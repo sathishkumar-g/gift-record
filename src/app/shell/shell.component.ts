@@ -9,11 +9,12 @@ import { User } from '../models/user';
   styleUrls: ['./shell.component.scss']
 })
 export class ShellComponent implements OnInit {
-  currentUser: User;
+  currentUser: string;
   constructor(private loginService: LoginService, private router: Router) { }
 
   ngOnInit(): void {
-    this.loginService.currentUser.subscribe(x => this.currentUser = x);
+    //this.loginService.currentUser.subscribe(x => this.currentUser = x);
+    this.currentUser=sessionStorage.getItem('currentUser');
   }
   logout() {
     this.loginService.logout();

@@ -17,7 +17,7 @@ export class GiftRecordService implements OnInit {
     //this.http.get<GiftRecord>(`${environment.getUrl}`, { 'headers': Constants.headers });
   }
   getAll(): Observable<GiftRecord> {
-    return this.http.get<GiftRecord>(`${environment.getUrl}`, { 'headers': Constants.headers }).pipe(
+    return this.http.get<GiftRecord>(`${environment.getUrl}`).pipe(
       catchError(this.handleError<GiftRecord>('getGiftRecord'))
     );
   }
@@ -55,18 +55,16 @@ export class GiftRecordService implements OnInit {
   }
 
   remove(record: GiftRecordItem): Observable<any> {
-    return this.http.post(`${environment.deleteUrl}`, record, {responseType: 'text'}).pipe(
+    return this.http.post(`${environment.deleteUrl}`, record, { responseType: 'text' }).pipe(
       tap(_ => console.log(`deleted giftRecordItem id=${record.name}`)),
       catchError(this.handleError<GiftRecord>('deleteGiftRecord'))
     );
   }
 
   deleteSelectedData(record: GiftRecordItem[]): Observable<any> {
-    console.log(record);
-    let giftRecord=new GiftRecord();
-    giftRecord.giftRecords=record;
-    console.log(giftRecord.giftRecords);
-    return this.http.post(`${environment.selectiveDeleteUrl}`,giftRecord, {responseType: 'text'}).pipe(
+    let giftRecord = new GiftRecord();
+    giftRecord.giftRecords = record;
+    return this.http.post(`${environment.selectiveDeleteUrl}`, giftRecord, { responseType: 'text' }).pipe(
       tap(_ => console.log(`deleted ${record.length} giftRecordItems`)),
       catchError(this.handleError<GiftRecord>('deleteSelectedData'))
     );

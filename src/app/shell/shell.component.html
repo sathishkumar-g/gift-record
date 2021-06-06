@@ -1,10 +1,12 @@
-<div class="jumbotron text-center text-white bg-color p-3 mb-2 bg-gradient">
-    <h1>Sugysri Sathish</h1>
-    <h3>1st Birthday Anniversary</h3>
-</div>
-
-
 <div class="container-fluid">
+    <div class="row">
+        <div class="jumbotron text-center text-white bg-color p-3 mb-2 bg-gradient">
+            <h1>Sugysri Sathish</h1>
+            <h3>1st Birthday Anniversary</h3>
+        </div>
+    </div>
+
+
     <div class="row">
         <div class="col-sm-2 bg-color bg-gradient">
             <!-- Links -->
@@ -18,7 +20,7 @@
                 <li class="nav-item">
                     <a class="nav-link text-white" routerLink="test">Admin Model</a>
                 </li>
-                <li class="nav-item" *ngIf="currentUser.role==='admin'">
+                <li class="nav-item" *ngIf="currentUser==='admin'">
                     <a class="nav-link text-white" routerLink="admin">Admin</a>
                 </li>
                 <li class="nav-item">

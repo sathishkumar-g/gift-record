@@ -1,5 +1,5 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { Injectable } from '@angular/core';
+import { Injectable, OnInit } from '@angular/core';
 import { BehaviorSubject, Observable, of, throwError } from 'rxjs';
 import { catchError, map, tap } from 'rxjs/operators';
 import { environment } from 'src/environments/environment';
@@ -9,18 +9,18 @@ import { User } from '../models/user';
 @Injectable({
   providedIn: 'root'
 })
-export class LoginService {
-  private currentUserSubject: BehaviorSubject<User>;
-  public currentUser: Observable<User>;
+export class LoginService{
+  //private currentUserSubject: BehaviorSubject<string>;
+  //public currentUser: Observable<string>;
 
   constructor(private http: HttpClient) {
-    this.currentUserSubject = new BehaviorSubject<User>(JSON.parse(sessionStorage.getItem('currentUser')));
-    this.currentUser = this.currentUserSubject.asObservable();
+    //this.currentUserSubject = new BehaviorSubject<string>(JSON.parse(sessionStorage.getItem('currentUser')));
+    //this.currentUser = this.currentUserSubject.asObservable();
   }
-
-  public get currentUserValue(): User {
-    return this.currentUserSubject.value;
-  }
+   
+  //   public get currentUserValue(): string {
+  //   return this.currentUserSubject.value;
+  // }
 
   login(username: string, password: string) {
     let userDetails: User = new User();
@@ -29,10 +29,12 @@ export class LoginService {
     return this.http.post<any>(`${environment.apiUrl}`, userDetails, {
       'headers': Constants.headers
     })
-      .pipe(map(user => {
-        sessionStorage.setItem('currentUser', JSON.stringify(user));
-        this.currentUserSubject.next(user);
-        return user;
+      .pipe(map(response => {
+        sessionStorage.setItem('currentUser', username);
+        //this.currentUserSubject.next(username);
+        let tokenStr= 'Bearer '+response.token;
+        sessionStorage.setItem('token', tokenStr);
+        return username;
       }),
         tap(_ => console.log(`Logged in user=${username}`)),
         catchError(this.handleError<String>('login failed'))
@@ -54,9 +56,8 @@ export class LoginService {
   }
 
   logout() {
-    // remove user from local storage to log user out
-    sessionStorage.removeItem('currentUser');
-    this.currentUserSubject.next(null);
+    sessionStorage.clear();
+    //this.currentUserSubject.next(null);
   }
 }
 

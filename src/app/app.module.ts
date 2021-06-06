@@ -30,10 +30,11 @@ import { MatSortModule } from '@angular/material/sort';
 
 import { CdkTableModule } from '@angular/cdk/table';
 import { OverlayModule } from '@angular/cdk/overlay';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { FormDialogComponent } from './form-dialog/form-dialog.component';
+import { JwtInterceptor } from './interceptors/jwt-interceptor';
 
 @NgModule({
   declarations: [
@@ -74,6 +75,7 @@ import { FormDialogComponent } from './form-dialog/form-dialog.component';
   ],
 
   providers: [
+    { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true }
   ],
 
   bootstrap: [AppComponent]
