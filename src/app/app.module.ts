@@ -35,6 +35,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { FormDialogComponent } from './form-dialog/form-dialog.component';
 import { JwtInterceptor } from './interceptors/jwt-interceptor';
+import { MatCarouselModule } from '@ngbmodule/material-carousel';
 
 @NgModule({
   declarations: [
@@ -71,7 +72,8 @@ import { JwtInterceptor } from './interceptors/jwt-interceptor';
     OverlayModule,
     FormsModule,
     ReactiveFormsModule,
-    HttpClientModule
+    HttpClientModule,
+    MatCarouselModule.forRoot()
   ],
 
   providers: [
