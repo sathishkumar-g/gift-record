@@ -1,6 +1,6 @@
 # SugysriSsr
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 12.0.0.
+This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 12.0.0. This project is used to store gifts and money received during a ceremony.
 
 ## Development server
 
